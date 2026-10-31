@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<base href="./">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Portal Games</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<script>
+window.tgLoadTimeout = setTimeout(() => {
+  console.warn('Telegram WebApp не загрузился, используем fallback режим');
+  window.telegramFallback = true;
+}, 5000);
+</script>
+<script src="https://telegram.org/js/telegram-web-app.js"
+        onload="clearTimeout(window.tgLoadTimeout)"
+        onerror="clearTimeout(window.tgLoadTimeout); console.error('Telegram WebApp failed to load'); window.telegramFallback = true;"></script>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">◆</span>
+      <span>Portal<span class="brand-accent">Games</span></span>
+    </div>
+    <div class="search-wrap"><!-- index.html -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>MM Italy — Gaming Curator</title>
+<link rel="stylesheet" href="style.css" />
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+<div class="app">
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">MM</span>
+      <span class="brand-accent">Italy</span>
+    </div>
+    <div class="search-wrap">
+      <input id="searchInput" class="search-input" type="text" placeholder="Cerca un gioco…" />
+    </div>
+    <button id="aboutBtn" class="about-btn" aria-label="Informazioni">i</button>
+  </header>
+
+  <!-- Disclaimer -->
+  <div class="aggregator-note">
+    <strong>Nota</strong>
+    MM Italy è un aggregatore indipendente di giochi e offerte. Non è uno store ufficiale
+    di Steam, Epic Games o GOG. Prezzi, sconti e notizie provengono da API pubbliche di terze parti;
+    l'acquisto avviene sempre sullo store ufficiale del publisher.
+  </div>
+
+  <!-- Tabs -->
+  <nav class="tabs">
+    <button class="tab active" data-section="home">Home</button>
+    <button class="tab" data-section="new_releases">Novità</button>
+    <button class="tab" data-section="free_games">Gratis</button>
+    <button class="tab" data-section="hot_deals">Offerte</button>
+    <button class="tab" data-section="news">Notizie</button>
+    <button class="tab" data-section="discover_and_explore">Esplora</button>
+  </nav>
+
+  <main class="content">
+
+    <!-- HOME -->
+    <section class="panel active" id="section-home">
+      <div class="hero">
+        <p class="hero-eyebrow">Edizione di oggi · 31 ottobre 2026</p>
+        <h1 class="hero-title">Il tuo universo <em>gaming</em>,<br/>curato con gusto.</h1>
+        <p class="hero-sub">Novità, titoli gratuiti e le migliori offerte — tutto in un unico luogo, selezionato per te.</p>
+      </div>
+
+      <div class="section-head"><h2>Novità <em>·</em> appena usciti</h2></div>
+      <div class="grid" id="grid-home"></div>
+
+      <div class="section-head"><h2>Gratis <em>·</em> da non perdere</h2></div>
+      <div class="grid" id="grid-free_games-home"></div>
+
+      <div class="section-head"><h2>Offerte <em>·</em> del momento</h2></div>
+      <div class="grid" id="grid-hot_deals-home"></div>
+
+      <div class="section-head"><h2>Notizie <em>·</em> dall'industria</h2></div>
+      <div class="news-list" id="news-list-home"></div>
+    </section>
+
+    <!-- NEW RELEASES -->
+    <section class="panel" id="section-new_releases">
+      <div class="section-head"><h2>Novità</h2></div>
+      <p class="section-sub">Gli ultimi rilasci e i titoli più attesi della stagione.</p>
+      <div class="grid" id="grid-new_releases"></div>
+      <button id="loadMoreNewReleases" class="btn load-more-btn" style="display:none;">Mostra altri</button>
+    </section>
+
+    <!-- FREE GAMES -->
+    <section class="panel" id="section-free_games">
+      <div class="section-head"><h2>Gratis</h2></div>
+      <p class="section-sub">Giochi in regalo, chiavi beta e ricompense a tempo limitato.</p>
+      <div class="grid" id="grid-free_games"></div>
+    </section>
+
+    <!-- HOT DEALS -->
+    <section class="panel" id="section-hot_deals">
+      <div class="section-head"><h2>Offerte</h2></div>
+      <p class="section-sub">Gli sconti più interessanti — da prendere al volo.</p>
+      <div class="grid" id="grid-hot_deals"></div>
+      <button id="loadMoreHotDeals" class="btn load-more-btn" style="display:none;">Mostra altri</button>
+    </section>
+
+    <!-- NEWS -->
+    <section class="panel" id="section-news">
+      <div class="section-head"><h2>Notizie</h2></div>
+      <p class="section-sub">Le ultime dall'industria dei videogiochi.</p>
+      <div class="news-list" id="news-list"></div>
+    </section>
+
+    <!-- DISCOVER -->
+    <section class="panel" id="section-discover_and_explore">
+      <div class="section-head"><h2>Esplora</h2></div>
+      <p class="section-sub">Filtra per genere, piattaforma o titolo.</p>
+      <div id="genreChips" class="genre-chips"></div>
+      <div class="grid" id="grid-discover_and_explore"></div>
+      <button id="loadMoreDiscover" class="btn load-more-btn" style="display:none;">Mostra altri</button>
+    </section>
+
+  </main>
+
+  <!-- Detail sheet -->
+  <div id="sheetBackdrop" class="sheet-backdrop">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div id="sheetCover" class="sheet-cover"></div>
+      <div class="sheet-body">
+        <h3 id="sheetTitle"></h3>
+        <p id="sheetMeta" class="sheet-meta"></p>
+        <div id="sheetRatings" class="sheet-ratings"></div>
+        <div id="sheetDesc" class="sheet-desc"></div>
+        <div id="sheetStores" class="sheet-stores"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About modal -->
+  <div id="aboutBackdrop" class="about-backdrop">
+    <div class="about-sheet">
+      <h3>Informazioni su <em style="color:var(--accent);font-style:italic;">MM Italy</em></h3>
+      <p>MM Italy è un aggregatore indipendente che raccoglie le migliori opportunità del mondo gaming in un'unica esperienza curata.</p>
+      <p>Non è uno store ufficiale e non è affiliato a Steam, Epic Games Store, GOG o altre piattaforme. Le informazioni su giochi, sconti e offerte gratuite provengono da API pubbliche come RAWG, CheapShark e GamerPower; le notizie dai feed RSS delle testate di settore.</p>
+      <p>Quando acquisti un gioco o riscatti un'offerta, la transazione avviene sempre sullo store ufficiale del publisher.</p>
+    </div>
+  </div>
+
+  <!-- Bottom nav -->
+  <nav class="bottom-nav">
+    <button class="bnav-item active" data-section="home"><span class="bnav-icon">◆</span>Home</button>
+    <button class="bnav-item" data-section="free_games"><span class="bnav-icon">✦</span>Gratis</button>
+    <button class="bnav-item" data-section="hot_deals"><span class="bnav-icon">❖</span>Offerte</button>
+    <button class="bnav-item" data-section="news"><span class="bnav-icon">◈</span>Notizie</button>
+    <button class="bnav-item" data-section="discover_and_explore"><span class="bnav-icon">✧</span>Esplora</button>
+  </nav>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
