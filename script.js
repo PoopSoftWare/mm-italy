@@ -1,27 +1,4 @@
-// ---------------------------------------------------------------------------
-// Telegram WebApp init — с обработкой ошибок
-// ---------------------------------------------------------------------------
-const tg = window.Telegram && window.Telegram.WebApp ? window.Telegram.WebApp : null;
-const isFallbackMode = window.telegramFallback || !tg;
-
-if (tg && !isFallbackMode) {
-  try {
-    tg.ready();
-    tg.expand && tg.expand();
-    tg.setHeaderColor && tg.setHeaderColor("#0a0e16");
-    tg.setBackgroundColor && tg.setBackgroundColor("#0a0e16");
-  } catch (e) {
-    console.error("Telegram WebApp init error:", e);
-  }
-}
-
-function haptic(style = "light") {
-  if (tg && tg.HapticFeedback && !isFallbackMode) {
-    try { tg.HapticFeedback.impactOccurred(style); } catch (e) {}
-  }
-}
-
-function openLink(url) {// script.js — обновлены только строки интерфейса на итальянский, вся механика парсинга сохранена
+// script.js — механика парсинга полностью сохранена, только интерфейс на итальянском
 
 // ---------------------------------------------------------------------------
 // Telegram WebApp init
@@ -32,8 +9,8 @@ if (tg && !isFallbackMode) {
   try {
     tg.ready();
     tg.expand && tg.expand();
-    tg.setHeaderColor && tg.setHeaderColor("#ece6da");
-    tg.setBackgroundColor && tg.setBackgroundColor("#ece6da");
+    tg.setHeaderColor && tg.setHeaderColor("#0a0b0f");
+    tg.setBackgroundColor && tg.setBackgroundColor("#0a0b0f");
   } catch (e) { console.error("Telegram WebApp init error:", e); }
 }
 function haptic(style = "light") {
@@ -418,7 +395,7 @@ function getStoreNameCheapShark(storeID) {
 // ---------------------------------------------------------------------------
 const TAG_LABEL = { new: "Novità", free: "Gratis", deal: "Offerta", discover: "" };
 const TAG_CLASS = { new: "", free: "tag-free", deal: "tag-deal", discover: "" };
-const PLACEHOLDER_GRADIENT = "linear-gradient(135deg, rgba(184,74,42,0.12), rgba(61,90,61,0.10))";
+const PLACEHOLDER_GRADIENT = "linear-gradient(135deg, rgba(200,255,62,0.08), rgba(107,138,255,0.06))";
 
 function priceLine(game) {
   if (game.tag === "free") {
@@ -475,7 +452,7 @@ function renderGrid(elId, games, append = false) {
     seenKeys.add(key); return true;
   });
   if (!append && uniqueGames.length === 0) {
-    el.innerHTML = `<div class="empty-state">Niente da mostrare qui — torna più tardi.</div>`;
+    el.innerHTML = `<div class="empty-state">Niente da mostrare — torna più tardi.</div>`;
     return;
   }
   const html = uniqueGames.map(cardHTML).join("");
@@ -549,7 +526,7 @@ async function openDetailSheet(game) {
   if (game.image) {
     cover.innerHTML = `<img src="${game.image}" alt="" style="width:100%;height:100%;object-fit:cover;" />`;
   } else {
-    cover.innerHTML = `<div style="background:${PLACEHOLDER_GRADIENT};width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;color:var(--text-soft);">◆</div>`;
+    cover.innerHTML = `<div style="background:${PLACEHOLDER_GRADIENT};width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;color:var(--text-soft);">◆</div>`;
   }
   if (game.tag === "free") {
     desc.textContent = stripHTML(game.description) || stripHTML(game.instructions) || "Nessuna descrizione disponibile.";
@@ -681,7 +658,7 @@ function openNewsSheet(item) {
   if (item.image) {
     cover.innerHTML = `<img src="${item.image}" alt="" style="width:100%;height:100%;object-fit:cover;" />`;
   } else {
-    cover.innerHTML = `<div style="background:${PLACEHOLDER_GRADIENT};width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;color:var(--text-soft);">◆</div>`;
+    cover.innerHTML = `<div style="background:${PLACEHOLDER_GRADIENT};width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;color:var(--text-soft);">◆</div>`;
   }
   desc.innerHTML = formatArticleHTML(item.content || item.summary);
   attachSheetClose();
